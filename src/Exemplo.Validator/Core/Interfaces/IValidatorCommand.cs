@@ -1,8 +1,9 @@
-﻿using System.Threading.Tasks;
+﻿using Exemplo.Validator.Core;
+using System.Threading.Tasks;
 
 namespace Exemplo.Validator.Interfaces
 {
-    public interface IValidatorCustom<T>
+    public interface IValidatorCommand<T>
     {
         Task ValidateRules(T newItem, T oldItem, params string[] fieldsPayLoad);
     }

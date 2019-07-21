@@ -3,7 +3,7 @@ using KellermanSoftware.CompareNetObjects;
 
 namespace Exemplo.Validator.ValidatorProcesso.Fields
 {
-    public class ValidatorItemForo : IValidatorFieldCustom<Processo>
+    public class ValidatorItemForo : IValidatorFieldCommand<Processo>
     {
         public string Name => nameof(Processo.ForoId);
 

@@ -4,7 +4,7 @@ using KellermanSoftware.CompareNetObjects;
 
 namespace Exemplo.Validator.ValidatorProcesso.Fields
 {
-    public class ValidatorItemVara : IValidatorFieldCustom<Processo>
+    public class ValidatorItemVara : IValidatorFieldCommand<Processo>
     {
         public string Name => nameof(Processo.VaraId);
 

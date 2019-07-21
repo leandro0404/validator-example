@@ -1,23 +1,23 @@
-﻿using System;
+﻿using Exemplo.Validator.Interfaces;
+using KellermanSoftware.CompareNetObjects;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using Exemplo.Validator.Interfaces;
-using KellermanSoftware.CompareNetObjects;
 
 namespace Exemplo.Validator.Core
 {
-    public abstract class ValidatorCustom<T>
+    public abstract class ValidatorCommand<T>
     {
         private List<ValidationItem> _erros = new List<ValidationItem>();
 
-        public void Execute(T newItem, T oldItem, string[] fieldsPayLoad, IEnumerable<IValidatorFieldCustom<T>> validators)
+        public void Execute(T newItem, T oldItem, string[] fieldsPayLoad, IEnumerable<IValidatorFieldCommand<T>> validators)
         {
             var changeFields = ListChangedFields(newItem, oldItem, fieldsPayLoad, validators);
             Erros(changeFields, newItem, validators);
         }
 
-        public IEnumerable<Difference> ListChangedFields(T newItem, T oldItem, string[] fieldsPayLoad, IEnumerable<IValidatorFieldCustom<T>> validators)
+        public IEnumerable<Difference> ListChangedFields(T newItem, T oldItem, string[] fieldsPayLoad, IEnumerable<IValidatorFieldCommand<T>> validators)
         {
             var configComparador = new ComparisonConfig() { MaxDifferences = int.MaxValue };
             var compare = new CompareLogic(configComparador);
@@ -26,7 +26,7 @@ namespace Exemplo.Validator.Core
                 fieldsPayLoad.Contains(i.PropertyName, StringComparer.OrdinalIgnoreCase)).ToList();
         }
 
-        public void Erros(IEnumerable<Difference> changeFields, T newItem, IEnumerable<IValidatorFieldCustom<T>> _validators)
+        public void Erros(IEnumerable<Difference> changeFields, T newItem, IEnumerable<IValidatorFieldCommand<T>> _validators)
         {
             foreach (var field in changeFields)
             {

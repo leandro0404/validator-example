@@ -2,7 +2,7 @@
 
 namespace Exemplo.Validator.Interfaces
 {
-    public interface IValidatorFieldCustom<T>
+    public interface IValidatorFieldCommand<T>
     {
         string Name
         {

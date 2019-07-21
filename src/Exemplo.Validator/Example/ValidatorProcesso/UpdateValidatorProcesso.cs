@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace Exemplo.Validator
 {
-    public class UpdateValidatorProcesso : ValidatorCustom<Processo>, IValidatorCustom<Processo>
+    public class UpdateValidatorProcesso : ValidatorCommand<Processo>, IValidatorCommand<Processo>
     {
-        private readonly IEnumerable<IValidatorFieldCustom<Processo>> _validators;
+        private readonly IEnumerable<IValidatorFieldCommand<Processo>> _validators;
 
-        public UpdateValidatorProcesso(IEnumerable<IValidatorFieldCustom<Processo>> validators)
+        public UpdateValidatorProcesso(IEnumerable<IValidatorFieldCommand<Processo>> validators)
         {
             _validators = validators;
         }
